@@ -1,7 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Navbar = () => {
+  const navItems = (
+    <>
+      <li>
+        <Link to="/" exact activeClassName="active-link">
+          Home
+        </Link>
+      </li>
+      <li>
+        <Link to="/available-foods" activeClassName="active-link">
+          Available Foods
+        </Link>
+      </li>
+    </>
+  );
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
@@ -33,20 +47,11 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className={`menu menu-sm dropdown-content bg-white text-green-500 rounded-box z-[1] mt-3 w-52 p-2 shadow ${
+            className={`menu menu-sm dropdown-content bg-white text-teal-500 font-bold rounded-box z-[1] mt-3 w-52 p-2 shadow ${
               isDropdownOpen ? "block" : "hidden"
             }`}
           >
-            <li>
-              <NavLink to="/" exact activeClassName="active-link">
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/available-foods" activeClassName="active-link">
-                Available Foods
-              </NavLink>
-            </li>
+            {navItems}
           </ul>
         </div>
 
@@ -57,7 +62,7 @@ const Navbar = () => {
             alt="Logo"
             className="h-8 w-8 md:h-10 md:w-10"
           />
-          <h2 className="font-bold font-serif text-lg hidden md:block text-white">
+          <h2 className="font-extrabold font-serif text-lg hidden md:block text-white">
             FoodConnect
           </h2>
         </div>
@@ -66,34 +71,16 @@ const Navbar = () => {
       {/* Navbar Center (Links for Large Screens) */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 space-x-4">
-          <li>
-            <NavLink
-              to="/"
-              exact
-              activeClassName="font-bold underline"
-              className="text-white hover:text-blue-300"
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/available-foods"
-              activeClassName="font-bold underline"
-              className="text-white hover:text-blue-300"
-            >
-              Available Foods
-            </NavLink>
-          </li>
+          {navItems}
         </ul>
       </div>
 
       {/* Navbar End (Signup and Login Buttons) */}
       <div className="navbar-end space-x-2">
-        <button className="btn bg-purple-600 hover:bg-purple-700 text-white shadow-md">
+        <button className="btn bg-teal-600 hover:bg-teal-700 text-white shadow-md">
           Signup
         </button>
-        <button className="btn bg-red-400 hover:bg-red-500 text-white shadow-md">
+        <button className="btn bg-teal-600 hover:bg-teal-00 text-white shadow-md">
           Login
         </button>
       </div>

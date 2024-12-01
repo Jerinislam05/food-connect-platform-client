@@ -15,7 +15,15 @@ const router = createBrowserRouter([
         {
             path: '/available-foods',
             element: <AvailableFood></AvailableFood>
-        }
+        },
+        // {
+        //     path: '/available-foods',
+        //     element: <AvailableFood></AvailableFood>
+        // },
+        // {
+        //     path: '/available-foods',
+        //     element: <AvailableFood></AvailableFood>
+        // },
     ]
   },
 ]);
