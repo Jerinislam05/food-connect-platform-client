@@ -120,7 +120,7 @@ const SignUp = () => {
                 <img
                   src="https://static.vecteezy.com/system/resources/previews/042/165/816/non_2x/google-logo-transparent-free-png.png"
                   alt="Google Logo"
-                  className="w-6 h-6"
+                  className="w-8 h-8"
                 />
                 Sign in with Google
               </button>
