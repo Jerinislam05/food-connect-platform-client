@@ -1,0 +1,87 @@
+[
+    {
+      "id": 1,
+      "foodImage": "https://images.unsplash.com/photo-1603133872872-3984eeb39633?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "foodName": "Vegetable Pasta",
+      "donator": {
+        "image": "https://randomuser.me/api/portraits/men/32.jpg",
+        "name": "John Doe"
+      },
+      "quantity": 10,
+      "pickupLocation": "123 Green Avenue, City Center",
+      "expiryDateTime": "2024-12-01T18:00:00",
+      "additionalNotes": "Packed in eco-friendly containers. Vegetarian-friendly.",
+      "detailsUrl": "/food-details/1"
+    },
+    {
+      "id": 2,
+      "foodImage": "https://images.unsplash.com/photo-1544511916-0148ccdeb877?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "foodName": "Chicken Curry with Rice",
+      "donator": {
+        "image": "https://randomuser.me/api/portraits/women/45.jpg",
+        "name": "Jane Smith"
+      },
+      "quantity": 15,
+      "pickupLocation": "45 Park Street, Downtown",
+      "expiryDateTime": "2024-12-01T20:00:00",
+      "additionalNotes": "Spicy level: Medium. Includes cutlery.",
+      "detailsUrl": "/food-details/2"
+    },
+    {
+      "id": 3,
+      "foodImage": "https://images.unsplash.com/photo-1598511721774-740e1b3edace?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "foodName": "Fresh Sandwiches",
+      "donator": {
+        "image": "https://randomuser.me/api/portraits/men/76.jpg",
+        "name": "Michael Brown"
+      },
+      "quantity": 20,
+      "pickupLocation": "89 High Street, Market Area",
+      "expiryDateTime": "2024-12-02T14:00:00",
+      "additionalNotes": "Perfect for picnics. Includes various fillings.",
+      "detailsUrl": "/food-details/3"
+    },
+    {
+      "id": 4,
+      "foodImage": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "foodName": "Mixed Fruit Salad",
+      "donator": {
+        "image": "https://randomuser.me/api/portraits/women/81.jpg",
+        "name": "Emily Davis"
+      },
+      "quantity": 12,
+      "pickupLocation": "67 Orchard Lane, Suburbs",
+      "expiryDateTime": "2024-12-02T12:00:00",
+      "additionalNotes": "Freshly prepared with seasonal fruits.",
+      "detailsUrl": "/food-details/4"
+    },
+    {
+      "id": 5,
+      "foodImage": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "foodName": "Grilled Burgers",
+      "donator": {
+        "image": "https://randomuser.me/api/portraits/men/43.jpg",
+        "name": "Chris Johnson"
+      },
+      "quantity": 25,
+      "pickupLocation": "12 Burger Lane, Food Plaza",
+      "expiryDateTime": "2024-12-01T22:00:00",
+      "additionalNotes": "Available with various toppings and sauces.",
+      "detailsUrl": "/food-details/5"
+    },
+    {
+      "id": 6,
+      "foodImage": "https://images.unsplash.com/photo-1528736239320-07660cd5bf10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      "foodName": "Chocolate Cake",
+      "donator": {
+        "image": "https://randomuser.me/api/portraits/women/29.jpg",
+        "name": "Sophia Lee"
+      },
+      "quantity": 8,
+      "pickupLocation": "77 Baker's Street, City Center",
+      "expiryDateTime": "2024-12-01T21:00:00",
+      "additionalNotes": "Homemade with organic ingredients.",
+      "detailsUrl": "/food-details/6"
+    }
+  ]
+  
