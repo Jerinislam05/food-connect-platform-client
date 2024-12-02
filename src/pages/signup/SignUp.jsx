@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
-
-    const { createUser } = useContext(AuthContext);
+  const { createUser, signInWithGoogle } = useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -15,13 +14,22 @@ const SignUp = () => {
     console.log(name, email, password);
 
     createUser(email, password)
-    .then(result => {
+      .then((result) => {
         const user = result.user;
         console.log(user);
-    })
-    .then(error => console.log(error))
-    
+      })
+      .then((error) => console.log(error));
   };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log("Google signed in successful:", user);
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="flex flex-col-reverse lg:flex-row bg-white rounded-lg shadow-xl w-full max-w-4xl">
@@ -39,9 +47,7 @@ const SignUp = () => {
           <h2 className="text-4xl font-extrabold font-serif text-center text-teal-700 mb-4">
             Sign Up Please!
           </h2>
-          <p className="text-sm text-center text-teal-500 mb-6">
-            Welcome back! Please enter your credentials to log in.
-          </p>
+
           <form onSubmit={handleSignUp}>
             {/* Name Input */}
             <div className="mb-4">
@@ -105,6 +111,20 @@ const SignUp = () => {
                 Login Now!
               </Link>
             </p>
+
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={handleGoogleSignIn}
+                className="flex items-center gap-2 px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-400"
+              >
+                <img
+                  src="https://static.vecteezy.com/system/resources/previews/042/165/816/non_2x/google-logo-transparent-free-png.png"
+                  alt="Google Logo"
+                  className="w-6 h-6"
+                />
+                Sign in with Google
+              </button>
+            </div>
           </form>
         </div>
       </div>

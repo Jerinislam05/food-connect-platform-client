@@ -36,9 +36,6 @@ const Login = () => {
           <h2 className="text-4xl font-extrabold font-serif text-center text-teal-700 mb-4">
             Login Now!
           </h2>
-          <p className="text-sm text-center text-teal-500 mb-6">
-            Welcome back! Please enter your credentials to log in.
-          </p>
           <form onSubmit={handleLogin}>
             {/* Email Input */}
             <div className="mb-4">
@@ -72,14 +69,14 @@ const Login = () => {
             <div className="mb-4">
               <button
                 type="submit"
-                className="w-full py-2 text-white bg-teal-600 rounded-lg hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full py-2 text-gray-200 font-bold font-serif bg-teal-600 rounded-lg hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-400"
               >
                 Login
               </button>
             </div>
 
             {/* Sign Up Link */}
-            <p className="text-center font-serif text-gray-500 text-sm">
+            <p className="text-center font-bold font-serif text-gray-500 text-sm">
               New to Food Connect? <br />
               <Link
                 to="/signup"

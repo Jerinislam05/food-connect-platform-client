@@ -83,12 +83,18 @@ const Navbar = () => {
 
       {/* Navbar End (Signup and Login Buttons) */}
       <div className="navbar-end space-x-2">
-        <button className="btn bg-teal-600 hover:bg-teal-700 text-white shadow-md">
+        <Link
+          to="/signup"
+          className="btn bg-teal-600 hover:bg-teal-700 text-white shadow-md"
+        >
           Signup
-        </button>
-        <button className="btn bg-teal-600 hover:bg-teal-00 text-white shadow-md">
+        </Link>
+        <Link
+          to="/login"
+          className="btn bg-teal-600 hover:bg-teal-00 text-white shadow-md"
+        >
           Login
-        </button>
+        </Link>
       </div>
 
       {/* Logo Centered on Small Screens */}
