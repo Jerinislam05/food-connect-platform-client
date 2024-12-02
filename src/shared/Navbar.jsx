@@ -5,13 +5,21 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <Link to="/" exact activeClassName="active-link">
+        <Link
+          to="/"
+          className="font-extrabold text-xl font-serif"
+          activeClassName="active-link"
+        >
           Home
         </Link>
       </li>
       <li>
-        <Link to="/available-foods" activeClassName="active-link">
-          Available Foods
+        <Link
+          to="/available-foods"
+          className="font-extrabold text-xl font-serif"
+          activeClassName="active-link"
+        >
+          AvailableFoods
         </Link>
       </li>
     </>
@@ -70,9 +78,7 @@ const Navbar = () => {
 
       {/* Navbar Center (Links for Large Screens) */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 space-x-4">
-          {navItems}
-        </ul>
+        <ul className="menu menu-horizontal px-1 space-x-4">{navItems}</ul>
       </div>
 
       {/* Navbar End (Signup and Login Buttons) */}
