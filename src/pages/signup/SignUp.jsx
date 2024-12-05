@@ -62,6 +62,19 @@ const SignUp = () => {
                 required
               />
             </div>
+            {/* Photo URL */}
+            <div className="mb-4">
+              <label className="block text-sm font-serif font-bold text-teal-600 mb-1">
+                Photo URL
+              </label>
+              <input
+                type="url"
+                name="PhotoURL"
+                placeholder="Your Photo URL"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                required
+              />
+            </div>
             {/* Email Input */}
             <div className="mb-4">
               <label className="block text-sm font-serif font-bold text-teal-600 mb-1">
@@ -115,14 +128,14 @@ const SignUp = () => {
             <div className="flex justify-center mt-4">
               <button
                 onClick={handleGoogleSignIn}
-                className="flex items-center gap-2 px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                className="flex justify-center items-center gap-2 w-full px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-400"
               >
                 <img
                   src="https://static.vecteezy.com/system/resources/previews/042/165/816/non_2x/google-logo-transparent-free-png.png"
                   alt="Google Logo"
                   className="w-8 h-8"
                 />
-                Sign in with Google
+                <span>Sign in with Google</span>
               </button>
             </div>
           </form>

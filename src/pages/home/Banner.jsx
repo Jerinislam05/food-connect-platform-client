@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 const Banner = () => {
   const navigate = useNavigate();
 
-  const handleAvailableFood = () => {
-    navigate("/available-foods");
+  const handleContact = () => {
+    navigate("/contact");
   };
 
-  const handleAddFood = () => {
-    navigate("/add-food");
+  const handleCommunity = () => {
+    navigate("/community");
   };
 
   return (
@@ -16,21 +16,21 @@ const Banner = () => {
       <div id="slide1" className="carousel-item relative w-full h-[600px]">
         <img
           src="https://plus.unsplash.com/premium_photo-1661425443949-a5df44f1f2dd?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZmFtaWx5JTIwd2l0aCUyMGdyYW5kcGFyZW50c3xlbnwwfHwwfHx8MA%3D%3D"
-          className="w-full h-[95%]"
+          className="w-full object-cover"
         />
-        <div className="absolute flex items-center h-full top-0 left-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
+        <div className="absolute flex items-center h-full top-0 left-0 bg-gradient-to-r from-[#292929] to-[rgba(21, 21, 21, .5)]">
           <div className="text-white font-serif pl-12 space-y-7 w-1/2">
             <h2 className="text-6xl font-medium">Welcome to Food Connect</h2>
             <p className="text-2xl">Your Gateway to Delicious Journeys!</p>
             <div>
               <button 
-              onClick={handleAvailableFood}
-              className="btn btn-outline btn-warning mr-5">
-                Available Foods
+              onClick={handleCommunity}
+              className="btn btn-warning mr-5">
+                Our Community
               </button>
               <button 
-              onClick={handleAddFood}
-              className="btn btn-outline btn-warning">Add Food</button>
+              onClick={handleContact}
+              className="btn btn-outline btn-warning">Contact Here</button>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@ const Banner = () => {
       <div id="slide2" className="carousel-item relative w-full h-[600px]">
         <img
           src="https://muslimi.com/wp-content/uploads/2023/04/da.jpg"
-          className="w-full h-[95%]"
+          className="w-full object-cover"
         />
         <div className="absolute flex items-center h-full top-0 left-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
           <div className="text-white font-serif pl-12 space-y-7 w-1/2">
@@ -67,7 +67,7 @@ const Banner = () => {
       <div id="slide3" className="carousel-item relative w-full h-[600px]">
         <img
           src="https://t3.ftcdn.net/jpg/02/92/07/56/360_F_292075696_hGdSBQ9Bvf1jsaVMP2rTpuRr0VMATck0.jpg"
-          className="w-full"
+          className="w-full object-cover"
         />
         <div className="absolute flex items-center h-full top-0 left-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
           <div className="text-white font-serif pl-12 space-y-7 w-1/2">
@@ -88,7 +88,7 @@ const Banner = () => {
       <div id="slide4" className="carousel-item relative w-full h-[600px]">
         <img
           src="https://upmeals.com/wp-content/uploads/2021/05/dinner-together.jpg"
-          className="w-full"
+          className="w-full object-cover"
         />
         <div className="absolute flex items-center h-full top-0 left-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
           <div className="text-white font-serif pl-12 space-y-7 w-1/2">

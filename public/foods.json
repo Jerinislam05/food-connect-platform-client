@@ -1,87 +1,106 @@
 [
-    {
-      "id": 1,
-      "foodImage": "https://images.unsplash.com/photo-1603133872872-3984eeb39633?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-      "foodName": "Vegetable Pasta",
-      "donator": {
-        "image": "https://randomuser.me/api/portraits/men/32.jpg",
-        "name": "John Doe"
-      },
-      "quantity": 10,
-      "pickupLocation": "123 Green Avenue, City Center",
-      "expiryDateTime": "2024-12-01T18:00:00",
-      "additionalNotes": "Packed in eco-friendly containers. Vegetarian-friendly.",
-      "detailsUrl": "/food-details/1"
-    },
-    {
-      "id": 2,
-      "foodImage": "https://images.unsplash.com/photo-1544511916-0148ccdeb877?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-      "foodName": "Chicken Curry with Rice",
-      "donator": {
-        "image": "https://randomuser.me/api/portraits/women/45.jpg",
-        "name": "Jane Smith"
-      },
-      "quantity": 15,
-      "pickupLocation": "45 Park Street, Downtown",
-      "expiryDateTime": "2024-12-01T20:00:00",
-      "additionalNotes": "Spicy level: Medium. Includes cutlery.",
-      "detailsUrl": "/food-details/2"
-    },
-    {
-      "id": 3,
-      "foodImage": "https://images.unsplash.com/photo-1598511721774-740e1b3edace?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-      "foodName": "Fresh Sandwiches",
-      "donator": {
-        "image": "https://randomuser.me/api/portraits/men/76.jpg",
-        "name": "Michael Brown"
-      },
-      "quantity": 20,
-      "pickupLocation": "89 High Street, Market Area",
-      "expiryDateTime": "2024-12-02T14:00:00",
-      "additionalNotes": "Perfect for picnics. Includes various fillings.",
-      "detailsUrl": "/food-details/3"
-    },
-    {
-      "id": 4,
-      "foodImage": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-      "foodName": "Mixed Fruit Salad",
-      "donator": {
-        "image": "https://randomuser.me/api/portraits/women/81.jpg",
-        "name": "Emily Davis"
-      },
-      "quantity": 12,
-      "pickupLocation": "67 Orchard Lane, Suburbs",
-      "expiryDateTime": "2024-12-02T12:00:00",
-      "additionalNotes": "Freshly prepared with seasonal fruits.",
-      "detailsUrl": "/food-details/4"
-    },
-    {
-      "id": 5,
-      "foodImage": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-      "foodName": "Grilled Burgers",
-      "donator": {
-        "image": "https://randomuser.me/api/portraits/men/43.jpg",
-        "name": "Chris Johnson"
-      },
-      "quantity": 25,
-      "pickupLocation": "12 Burger Lane, Food Plaza",
-      "expiryDateTime": "2024-12-01T22:00:00",
-      "additionalNotes": "Available with various toppings and sauces.",
-      "detailsUrl": "/food-details/5"
-    },
-    {
-      "id": 6,
-      "foodImage": "https://images.unsplash.com/photo-1528736239320-07660cd5bf10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-      "foodName": "Chocolate Cake",
-      "donator": {
-        "image": "https://randomuser.me/api/portraits/women/29.jpg",
-        "name": "Sophia Lee"
-      },
-      "quantity": 8,
-      "pickupLocation": "77 Baker's Street, City Center",
-      "expiryDateTime": "2024-12-01T21:00:00",
-      "additionalNotes": "Homemade with organic ingredients.",
-      "detailsUrl": "/food-details/6"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "foodImage": "https://veggiefestchicago.org/wp-content/uploads/2021/06/21-pasta.jpg",
+    "foodName": "Vegetable Pasta",
+    "donatorName": "John Doe",
+    "donatorImage": "https://randomuser.me/api/portraits/men/1.jpg",
+    "donatorEmail": "john.doe@example.com",
+    "quantity": 10,
+    "pickupLocation": "123 Green Avenue, City Center",
+    "expiryDateTime": "2024-12-01T18:00:00",
+    "additionalNotes": "Packed in eco-friendly containers. Vegetarian-friendly.",
+    "detailsUrl": "/food-details/1"
+  },
+  {
+    "id": 2,
+    "foodImage": "https://png.pngtree.com/background/20230425/original/pngtree-chicken-curry-in-white-rice-picture-image_2468684.jpg",
+    "foodName": "Chicken Curry with Rice",
+    "donatorName": "Jane Smith",
+    "donatorImage": "https://randomuser.me/api/portraits/women/2.jpg",
+    "donatorEmail": "jane.smith@example.com",
+    "quantity": 15,
+    "pickupLocation": "45 Park Street, Downtown",
+    "expiryDateTime": "2024-12-01T20:00:00",
+    "additionalNotes": "Spicy level: Medium. Includes cutlery.",
+    "detailsUrl": "/food-details/2"
+  },
+  {
+    "id": 3,
+    "foodImage": "https://www.centralmarketnewyork.com/wp-content/uploads/2024/07/DALL%C2%B7E-2024-07-28-12.42.29-A-highly-realistic-horizontal-photograph-of-a-sandwich-bar-with-fewer-ingredients-laid-out-on-a-wooden-table.-The-bar-features-a-selection-of-freshl.webp",
+    "foodName": "Fresh Sandwiches",
+    "donatorName": "Michael Brown",
+    "donatorImage": "https://randomuser.me/api/portraits/men/3.jpg",
+    "donatorEmail": "michael.brown@example.com",
+    "quantity": 20,
+    "pickupLocation": "89 High Street, Market Area",
+    "expiryDateTime": "2024-12-02T14:00:00",
+    "additionalNotes": "Perfect for picnics. Includes various fillings.",
+    "detailsUrl": "/food-details/3"
+  },
+  {
+    "id": 4,
+    "foodImage": "https://www.thespruceeats.com/thmb/RWlJDC93TPg8Q3AMG31O31ZN6h0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/fresh-fruit-salad-3056969-hero-01-46ec46a61afa49bc80b432c055388648.jpg",
+    "foodName": "Mixed Fruit Salad",
+    "donatorName": "Emily Davis",
+    "donatorImage": "https://randomuser.me/api/portraits/women/4.jpg",
+    "donatorEmail": "emily.davis@example.com",
+    "quantity": 12,
+    "pickupLocation": "67 Orchard Lane, Suburbs",
+    "expiryDateTime": "2024-12-02T12:00:00",
+    "additionalNotes": "Freshly prepared with seasonal fruits.",
+    "detailsUrl": "/food-details/4"
+  },
+  {
+    "id": 5,
+    "foodImage": "https://www.garnishwithlemon.com/wp-content/uploads/2023/05/Turkey-Burger-FEATURED-IMAGE.jpg",
+    "foodName": "Grilled Burgers",
+    "donatorName": "Chris Johnson",
+    "donatorImage": "https://randomuser.me/api/portraits/men/5.jpg",
+    "donatorEmail": "chris.johnson@example.com",
+    "quantity": 25,
+    "pickupLocation": "12 Burger Lane, Food Plaza",
+    "expiryDateTime": "2024-12-01T22:00:00",
+    "additionalNotes": "Available with various toppings and sauces.",
+    "detailsUrl": "/food-details/5"
+  },
+  {
+    "id": 6,
+    "foodImage": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/birthday_chocolate_24628_16x9.jpg",
+    "foodName": "Chocolate Cake",
+    "donatorName": "Sophia Lee",
+    "donatorImage": "https://randomuser.me/api/portraits/women/6.jpg",
+    "donatorEmail": "sophia.lee@example.com",
+    "quantity": 8,
+    "pickupLocation": "77 Baker's Street, City Center",
+    "expiryDateTime": "2024-12-01T21:00:00",
+    "additionalNotes": "Homemade with organic ingredients.",
+    "detailsUrl": "/food-details/6"
+  },
+  {
+    "id": 7,
+    "foodImage": "https://www.allrecipes.com/thmb/ASRzxoRrPoMLQEpczFvU7osJNF4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/21353-italian-spaghetti-sauce-with-meatballs-2x1-141-cedbb650b4264576ab923c91215ce7fc.jpg",
+    "foodName": "Spaghetti & Meatballs",
+    "donatorName": "Thomas Green",
+    "donatorImage": "https://randomuser.me/api/portraits/men/7.jpg",
+    "donatorEmail": "thomas.green@example.com",
+    "quantity": 30,
+    "pickupLocation": "22 Bistro Lane, Central Market",
+    "expiryDateTime": "2024-12-01T19:00:00",
+    "additionalNotes": "Served with garlic bread and Parmesan.",
+    "detailsUrl": "/food-details/7"
+  },
+  {
+    "id": 8,
+    "foodImage": "https://i.ytimg.com/vi/ZxZO9wdOHPU/maxresdefault.jpg",
+    "foodName": "Garlic Bread",
+    "donatorName": "Amy Martinez",
+    "donatorImage": "https://randomuser.me/api/portraits/women/8.jpg",
+    "donatorEmail": "amy.martinez@example.com",
+    "quantity": 40,
+    "pickupLocation": "34 Artisan Alley, Downtown",
+    "expiryDateTime": "2024-12-01T23:00:00",
+    "additionalNotes": "Freshly baked with garlic butter.",
+    "detailsUrl": "/food-details/8"
+  }
+]

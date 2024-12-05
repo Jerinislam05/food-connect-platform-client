@@ -15,11 +15,38 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          to="/available-foods"
+          to="/add-food"
           className="font-extrabold text-xl font-serif"
           activeClassName="active-link"
         >
-          AvailableFoods
+          AddFood
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/available-food"
+          className="font-extrabold text-xl font-serif"
+          activeClassName="active-link"
+        >
+          AvailableFood
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/manage-food"
+          className="font-extrabold text-xl font-serif"
+          activeClassName="active-link"
+        >
+          ManageFood
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/request-food"
+          className="font-extrabold text-xl font-serif"
+          activeClassName="active-link"
+        >
+          RequestFood
         </Link>
       </li>
     </>
