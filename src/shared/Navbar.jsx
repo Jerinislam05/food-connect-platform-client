@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
   const navItems = (
     <>
       <li>
@@ -116,12 +119,21 @@ const Navbar = () => {
         >
           Signup
         </Link>
-        <Link
-          to="/login"
-          className="btn bg-teal-600 hover:bg-teal-00 text-white shadow-md"
-        >
-          Login
-        </Link>
+        {!user ? (
+          <Link
+            to="/login"
+            className="btn bg-teal-600 hover:bg-teal-00 text-white shadow-md"
+          >
+            Login
+          </Link>
+        ) : (
+          <button
+            onClick={logOut}
+            className="btn bg-teal-600 hover:bg-teal-00 text-white shadow-md"
+          >
+            Logout
+          </button>
+        )}
       </div>
 
       {/* Logo Centered on Small Screens */}

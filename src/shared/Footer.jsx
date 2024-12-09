@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-teal-600 text-white py-10">
+    <footer className="bg-teal-600 font-serif text-white py-10">
       <div className="container mx-auto px-4">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -11,7 +11,7 @@ const Footer = () => {
               alt="Logo"
               className="h-10 w-10 mb-4"
             />
-            <h3 className="text-2xl font-bold mb-4 font-serif">
+            <h3 className="text-2xl font-bold mb-4">
               About FoodConnect
             </h3>
             <p className="text-gray-200 text-center md:text-left">
@@ -22,8 +22,8 @@ const Footer = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div>
-            <h3 className="text-2xl font-bold mb-4 font-serif">Quick Links</h3>
+          <div className="text-center md:text-left">
+            <h3 className="text-2xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
                 <a href="/" className="hover:underline">
@@ -59,7 +59,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Information */}
-          <div>
+          <div className="text-center md:text-left">
             <h3 className="text-2xl font-bold mb-4 font-serif">Get in Touch</h3>
             <p className="text-gray-200">Email: support@foodconnect.com</p>
             <p className="text-gray-200">Phone: +123 456 7890</p>
@@ -73,7 +73,7 @@ const Footer = () => {
         <div className="my-8 border-t border-gray-200"></div>
 
         {/* Bottom Section */}
-        <div className="flex items-center justify-between text-center md:text-left">
+        <div className="flex flex-col md:flex-row items-center justify-between text-center md:text-left">
           {/* Social Media Links */}
           <div className="mb-4 md:mb-0 flex gap-3">
             <a href="https://www.facebook.com/" className="text-white">

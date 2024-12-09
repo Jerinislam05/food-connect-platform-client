@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Community = () => {
-    const navigate = useNavigate();
-    const handleGetInvolved = () => {
-        navigate("/login")
-    }
+  const navigate = useNavigate();
+  const handleGetInvolved = () => {
+    navigate("/login");
+  };
   return (
     <div className="bg-white">
       {/* Cover Section */}
@@ -74,8 +74,8 @@ const Community = () => {
             </div>
             <div className="bg-teal-50 rounded-lg shadow-md p-6">
               <p className="text-gray-700">
-                As a single mother, the support I have received from Food Connect
-                has been a lifesaver. Forever grateful!
+                As a single mother, the support I have received from Food
+                Connect has been a lifesaver. Forever grateful!
               </p>
               <div className="flex items-center mt-4">
                 <img
@@ -137,11 +137,20 @@ const Community = () => {
             Whether you donate food or time, every contribution counts. Be a
             part of the change.
           </p>
-          <button 
-          onClick={handleGetInvolved}
-          className="mt-8 px-6 py-3 bg-white text-teal-800 font-bold rounded-lg hover:bg-teal-600 hover:text-white transition duration-300">
-            Get Involved
-          </button>
+          <div className="gap-4 mt-10">
+            <Link to="/login"
+              onClick={handleGetInvolved}
+              className=" bg-white text-teal-700 px-6 py-3 font-bold rounded-lg hover:bg-teal-600 hover:text-white transition duration-300"
+            >
+              Get Involved
+            </Link>
+            <Link
+              to="/"
+              className=" bg-teal-600 text-white rounded-lg text-lg font-bold px-6 py-3 shadow-md hover:bg-teal-700 hover:shadow-lg"
+            >
+              Back to Home
+            </Link>
+          </div>
         </div>
       </div>
     </div>

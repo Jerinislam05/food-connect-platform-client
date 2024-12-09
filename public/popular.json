@@ -1,0 +1,39 @@
+[
+    {
+      "foodName": "Margherita Pizza",
+      "quantity": 15,
+      "imageUrl": "https://cdn.pixabay.com/photo/2023/05/28/14/13/ai-generated-8023787_1280.jpg",
+      "pickupLocation": "Italian Delight"
+    },
+    {
+      "foodName": "Chicken Tikka Masala",
+      "quantity": 12,
+      "imageUrl": "https://www.licious.in/blog/wp-content/uploads/2020/12/Chicken-Tikka-Masala-min.jpg",
+      "pickupLocation": "Spice Hub"
+    },
+    {
+      "foodName": "Vegan Buddha Bowl",
+      "quantity": 8,
+      "imageUrl": "https://simplyceecee.co/wp-content/uploads/2018/07/veganbuddhabowl-2.jpg",
+      "pickupLocation": "Green Eats"
+    },
+    {
+      "foodName": "Chocolate Lava Cake",
+      "quantity": 20,
+      "imageUrl": "https://img.freepik.com/premium-photo/decadent-chocolate-lava-cake-with-molten-center-perfect-dessert-combines-rich-chocolate_817921-4530.jpg",
+      "pickupLocation": "Sweet Tooth Bakery"
+    },
+    {
+      "foodName": "Sushi Platter",
+      "quantity": 10,
+      "imageUrl": "https://www.foodiesfeed.com/wp-content/uploads/2023/04/sushi-platter-1.jpg",
+      "pickupLocation": "Tokyo Bites"
+    },
+    {
+      "foodName": "Classic Cheeseburger",
+      "quantity": 25,
+      "imageUrl": "https://www.shutterstock.com/shutterstock/photos/2282033179/display_1500/stock-photo-classic-hamburger-stock-photo-isolated-in-white-2282033179.jpg",
+      "pickupLocation": "Grill Masters"
+    }
+  ]
+  

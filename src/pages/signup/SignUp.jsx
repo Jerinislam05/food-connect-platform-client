@@ -1,31 +1,21 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
-  const { createUser, signInWithGoogle } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
 
     createUser(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
-      })
-      .then((error) => console.log(error));
-  };
-
-  const handleGoogleSignIn = () => {
-    signInWithGoogle()
-      .then((result) => {
-        const user = result.user;
-        console.log("Google signed in successful:", user);
+        console.log("User created:", result.user);
+        setShowModal(true);
       })
       .catch((error) => console.log(error));
   };
@@ -33,21 +23,11 @@ const SignUp = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="flex flex-col-reverse lg:flex-row bg-white rounded-lg shadow-xl w-full max-w-4xl">
-        {/* Image Section */}
-        <div className="hidden lg:block lg:w-1/2">
-          <img
-            src="https://i.pinimg.com/736x/65/dc/a6/65dca69f78972935caf61580e7c17bd9.jpg"
-            alt="Login Illustration"
-            className="w-full h-full object-cover rounded-l-lg"
-          />
-        </div>
-
-        {/* Login Form Section */}
+        {/* Form Section */}
         <div className="lg:w-1/2 p-8">
           <h2 className="text-4xl font-extrabold font-serif text-center text-teal-700 mb-4">
             Sign Up Please!
           </h2>
-
           <form onSubmit={handleSignUp}>
             {/* Name Input */}
             <div className="mb-4">
@@ -58,19 +38,6 @@ const SignUp = () => {
                 type="text"
                 name="name"
                 placeholder="Enter your name"
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                required
-              />
-            </div>
-            {/* Photo URL */}
-            <div className="mb-4">
-              <label className="block text-sm font-serif font-bold text-teal-600 mb-1">
-                Photo URL
-              </label>
-              <input
-                type="url"
-                name="PhotoURL"
-                placeholder="Your Photo URL"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
                 required
               />
@@ -88,11 +55,10 @@ const SignUp = () => {
                 required
               />
             </div>
-
             {/* Password Input */}
             <div className="mb-6">
               <label className="block text-sm font-serif font-bold text-teal-600 mb-1">
-                Confirm Password
+                Password
               </label>
               <input
                 type="password"
@@ -103,11 +69,10 @@ const SignUp = () => {
               />
             </div>
 
-            {/* Login Button */}
+            {/* Sign Up Button */}
             <div className="mb-4">
               <button
                 type="submit"
-                value="Sign Up"
                 className="w-full py-2 text-white bg-teal-600 rounded-lg hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-400"
               >
                 Sign Up
@@ -124,23 +89,92 @@ const SignUp = () => {
                 Login Now!
               </Link>
             </p>
-
-            <div className="flex justify-center mt-4">
-              <button
-                onClick={handleGoogleSignIn}
-                className="flex justify-center items-center gap-2 w-full px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-400"
-              >
-                <img
-                  src="https://static.vecteezy.com/system/resources/previews/042/165/816/non_2x/google-logo-transparent-free-png.png"
-                  alt="Google Logo"
-                  className="w-8 h-8"
-                />
-                <span>Sign in with Google</span>
-              </button>
-            </div>
           </form>
         </div>
       </div>
+
+      {/* Modal for Successful Sign-Up */}
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white w-96 p-6 rounded-lg shadow-lg">
+            <h3 className="text-2xl text-center font-serif font-bold text-teal-700 mb-4">
+              Welcome to Food Connect!
+            </h3>
+            <p className="text-gray-600 text-center font-bold font-serif mb-6">Explore your private routes:</p>
+            <ul>
+              <li className="mb-2">
+                <Link
+                  to="/"
+                  className="block text-teal-600 hover:underline font-serif font-bold"
+                  onClick={() => setShowModal(false)}
+                >
+                  Home
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link
+                  to="/add-food"
+                  className="block text-teal-600 hover:underline font-serif font-bold"
+                  onClick={() => setShowModal(false)}
+                >
+                  AddFood
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link
+                  to="/available-food"
+                  className="block text-teal-600 hover:underline font-serif font-bold"
+                  onClick={() => setShowModal(false)}
+                >
+                  AvailableFood
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/manage-food"
+                  className="block text-teal-600 hover:underline font-serif font-bold"
+                  onClick={() => setShowModal(false)}
+                >
+                  ManageFood
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/request-food"
+                  className="block text-teal-600 hover:underline font-serif font-bold"
+                  onClick={() => setShowModal(false)}
+                >
+                  RequestFood
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/community"
+                  className="block text-teal-600 hover:underline font-serif font-bold"
+                  onClick={() => setShowModal(false)}
+                >
+                  OurCommunity
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="block text-teal-600 hover:underline font-serif font-bold"
+                  onClick={() => setShowModal(false)}
+                >
+                  ContactUs
+                </Link>
+              </li>
+            </ul>
+            <Link
+              to="/"
+              onClick={() => setShowModal(false)}
+              className="mt-4 w-full py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-800"
+            >
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

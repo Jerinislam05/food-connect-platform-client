@@ -1,4 +1,6 @@
 import Banner from "./Banner";
+import ChefsSpecialPicks from "./ChefsSpecialPicks";
+import CustomerFavorites from "./CustomerFavorites";
 import FeaturedFood from "./FeaturedFood";
 
 const Home = () => {
@@ -6,6 +8,8 @@ const Home = () => {
     <div>
         <Banner></Banner>
       <FeaturedFood></FeaturedFood>
+      <ChefsSpecialPicks></ChefsSpecialPicks>
+      <CustomerFavorites></CustomerFavorites>
     </div>
   );
 };

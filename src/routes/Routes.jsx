@@ -11,6 +11,8 @@ import Contact from "../bannerBtn/Contact";
 import NotFoundPage from "../NotFoundPage";
 import FoodDetails from "../pages/foodDetails/FoodDetails";
 import ManageFood from "../manageFood/ManageFood";
+import RequestFood from "../requestFood/requestFood";
+import PopularDetails from "../popularDetails/PopularDetails";
 
 const router = createBrowserRouter([
   {
@@ -53,11 +55,29 @@ const router = createBrowserRouter([
         path: `/foods/:id`,
         element: <FoodDetails></FoodDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/foods/${params.id}`),
+          fetch(`https://food-connect-server.vercel.app/foods/${params.id}`),
+      },
+      {
+        path: `/popular/:id`,
+        element: <PopularDetails></PopularDetails>,
+        loader: ({ params }) =>
+          fetch(`https://food-connect-server.vercel.app/popular/${params.id}`),
       },
       {
         path: "/manage-food",
-        element: <ManageFood></ManageFood>,
+        element: (
+          <PrivateRoute>
+            <ManageFood></ManageFood>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/request-food",
+        element: (
+          <PrivateRoute>
+            <RequestFood></RequestFood>
+          </PrivateRoute>
+        ),
       },
       {
         path: "*",

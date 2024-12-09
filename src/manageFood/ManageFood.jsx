@@ -1,15 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "../providers/AuthProvider";
 
 const ManageFood = () => {
   const [foods, setFoods] = useState([]);
-  const [userEmail, setUserEmail] = useState("loggedInUser@example.com"); // Replace with dynamic user email
+  const [userEmail, setUserEmail] = useState("loggedInUser@example.com");
   const [isLoading, setIsLoading] = useState(true);
+  const [editingFood, setEditingFood] = useState(null);
+  const { user } = useContext(AuthContext);
 
   const fetchUserFoods = async () => {
+    if (user?.email) {
+      setUserEmail(user.email);
+    }
+
     try {
       const response = await fetch(
-        `http://localhost:5000/foods?email=${userEmail}`
+        `https://food-connect-server.vercel.app/foods?email=${userEmail}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch foods");
@@ -31,16 +38,19 @@ const ManageFood = () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/foods/${id}`, {
-        method: "DELETE",
-      });
-      if (!response.ok) {
-        throw new Error("Failed to delete food");
-      }
+      const response = await fetch(
+        `https://food-connect-server.vercel.app/foods/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
       const result = await response.json();
-      if (result.deleteCount > 0) {
+
+      if (result.result.deletedCount > 0) {
         toast.success("Food deleted successfully");
-        fetchUserFoods(); // Refresh the list
+        const remaining = foods.filter((food) => food._id !== id);
+        setFoods(remaining);
+        fetchUserFoods();
       } else {
         toast.error("Failed to delete food");
       }
@@ -50,9 +60,39 @@ const ManageFood = () => {
     }
   };
 
-  const handleUpdate = (food) => {
-    console.log("Update clicked for:", food);
-    toast.info("Update feature not implemented yet!");
+  const handleEdit = (food) => {
+    setEditingFood(food); // Set the food to be edited
+    const modal = document.getElementById("edit-modal");
+    if (modal) modal.showModal();
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    // console.log(editingFood);
+
+    try {
+      const response = await fetch(
+        `https://food-connect-server.vercel.app/foods/${editingFood._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(editingFood), // Send the updated food data
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update food");
+      }
+
+      toast.success("Food updated successfully");
+      document.getElementById("edit-modal").close(); // Close the modal
+      fetchUserFoods(); // Refresh the list
+    } catch (error) {
+      console.error("Error updating food:", error);
+      toast.error("Failed to update food");
+    }
   };
 
   useEffect(() => {
@@ -71,8 +111,10 @@ const ManageFood = () => {
     <div className="container mx-auto px-4 py-8">
       {/* Page Header */}
       <div className="mb-6 text-center">
-        <h1 className="text-3xl font-bold text-teal-600">Manage My Foods</h1>
-        <p className="text-gray-600 mt-2">
+        <h1 className="text-3xl font-serif font-bold text-teal-600 animate-bounce">
+          ~Manage My Foods~
+        </h1>
+        <p className="text-gray-600 mt-2 font-bold font-serif">
           Here you can update or delete the foods you have added.
         </p>
       </div>
@@ -118,7 +160,7 @@ const ManageFood = () => {
                   </td>
                   <td className="px-6 py-4 flex justify-center items-center space-x-4">
                     <button
-                      onClick={() => handleUpdate(food)}
+                      onClick={() => handleEdit(food)}
                       className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
                     >
                       Edit
@@ -136,6 +178,73 @@ const ManageFood = () => {
           </table>
         </div>
       )}
+
+      {/* Edit Modal */}
+      <dialog
+        id="edit-modal"
+        className="rounded-xl shadow-2xl w-full max-w-md p-12"
+      >
+        <h3 className="text-3xl font-serif text-center font-bold text-teal-600 mb-4 animate-bounce">
+          ~Edit Food~
+        </h3>
+        {editingFood && (
+          <form onSubmit={handleUpdate}>
+            <div className="mb-4">
+              <label className="block text-sm font-semibold">Food Name</label>
+              <input
+                type="text"
+                value={editingFood.foodName}
+                onChange={(e) =>
+                  setEditingFood({ ...editingFood, foodName: e.target.value })
+                }
+                className="w-full border rounded-lg p-2"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-semibold">Quantity</label>
+              <input
+                type="number"
+                value={editingFood.quantity}
+                onChange={(e) =>
+                  setEditingFood({ ...editingFood, quantity: e.target.value })
+                }
+                className="w-full border rounded-lg p-2"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-semibold">
+                Pickup Location
+              </label>
+              <input
+                type="text"
+                value={editingFood.pickupLocation}
+                onChange={(e) =>
+                  setEditingFood({
+                    ...editingFood,
+                    pickupLocation: e.target.value,
+                  })
+                }
+                className="w-full border rounded-lg p-2"
+              />
+            </div>
+            <div className="flex justify-end space-x-4">
+              <button
+                type="button"
+                className="px-4 py-2 text-sm text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300"
+                onClick={() => document.getElementById("edit-modal").close()}
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="px-4 py-2 text-sm text-white bg-teal-600 rounded-lg hover:bg-teal-700"
+              >
+                Save Changes
+              </button>
+            </div>
+          </form>
+        )}
+      </dialog>
     </div>
   );
 };

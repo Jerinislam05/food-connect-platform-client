@@ -22,11 +22,12 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted: ", formData);
+    // console.log("Form Submitted: ", formData);
     Swal.fire({
         title: "Wow Amazing!",
         text: "Now You Can Explore Our Site",
-        icon: "success"
+        icon: "success",
+        confirmButtonColor: "#0891b2"
       });
     navigate("/");
   };

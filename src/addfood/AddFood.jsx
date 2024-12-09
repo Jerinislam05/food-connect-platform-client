@@ -1,6 +1,5 @@
 import AddFoodForm from "./AddFoodForm";
 
-
 const AddFood = () => {
     return (
         <div>

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddFoodForm = () => {
-  const { user } = useContext(AuthContext); // Logged-in user details
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate(AuthContext);
   const [formData, setFormData] = useState({
     foodName: "",
     foodImage: "",
@@ -12,7 +14,10 @@ const AddFoodForm = () => {
     pickupLocation: "",
     expiryDateTime: "",
     additionalNotes: "",
-    foodStatus: "available", // Default status
+    donatorName: "",
+    donatorEmail: "",
+    donatorImage: "",
+    foodStatus: "available",
   });
 
   const handleChange = (e) => {
@@ -22,35 +27,48 @@ const AddFoodForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const newFood = {
       ...formData,
-      donatorName: user?.displayName || "Anonymous",
-      donatorEmail: user?.email || "N/A",
+      donatorName: user?.displayName || formData.donatorName || "Anonymous",
+      donatorEmail: user?.email || formData.donatorEmail || "N/A",
+      donatorImage: user?.photoUrl || formData.donatorImage || "N/A",
     };
 
     try {
-      const response = await fetch("http://localhost:5000/foods", {
+      fetch("https://food-connect-server.vercel.app/foods", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newFood),
-      });
+      })
+        .then((response) => response.json())
+        .then((responseData) => {
+          // console.log(responseData);
 
-      if (response.ok) {
-        alert("Food added successfully!");
-        setFormData({
-          foodName: "",
-          foodImage: "",
-          quantity: "",
-          pickupLocation: "",
-          expiryDateTime: "",
-          additionalNotes: "",
-          foodStatus: "available",
+          Swal.fire({
+            title: "Success!",
+            text: "Food added successfully!",
+            icon: "success",
+            confirmButtonText: "View Details",
+          }).then(() => {
+            navigate(`/foods/${responseData.insertedId}`);
+          });
+
+          setFormData({
+            foodName: "",
+            foodImage: "",
+            quantity: "",
+            pickupLocation: "",
+            expiryDateTime: "",
+            additionalNotes: "",
+            donatorName: "",
+            donatorEmail: "",
+            donatorImage: "",
+            foodStatus: "available",
+          });
         });
-      } else {
-        alert("Failed to add food. Please try again.");
-      }
     } catch (error) {
       console.error("Error adding food:", error);
       alert("An error occurred. Please try again.");
@@ -59,8 +77,8 @@ const AddFoodForm = () => {
 
   return (
     <div className="max-w-3xl mx-auto py-10 px-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-3xl font-extrabold font-serif text-teal-700 text-center mb-6">
-        Add Food
+      <h2 className="text-3xl font-extrabold font-serif text-teal-700 text-center mb-6 animate-bounce">
+        ~AddFoodToCard~
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Food Name */}
@@ -89,7 +107,7 @@ const AddFoodForm = () => {
             name="foodImage"
             value={formData.foodImage}
             onChange={handleChange}
-            placeholder="Enter food image URL"
+            placeholder="Food Image URL"
             required
             className="w-full px-4 py-2 border rounded-lg focus:ring-teal-400 focus:border-teal-400"
           />
@@ -141,6 +159,21 @@ const AddFoodForm = () => {
             className="w-full px-4 py-2 border rounded-lg focus:ring-teal-400 focus:border-teal-400"
           />
         </div>
+        {/* Food Status */}
+        <div>
+          <label className="block text-lg font-medium text-gray-700">
+            Food Status
+          </label>
+          <select
+            name="foodStatus"
+            value={formData.foodStatus}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-lg focus:ring-teal-400 focus:border-teal-400"
+          >
+            <option value="available">Available</option>
+            <option value="not-available">Not Available</option>
+          </select>
+        </div>
 
         {/* Additional Notes */}
         <div>
@@ -156,21 +189,50 @@ const AddFoodForm = () => {
             className="w-full px-4 py-2 border rounded-lg focus:ring-teal-400 focus:border-teal-400"
           ></textarea>
         </div>
-
-        {/* Food Status */}
+        <h2 className="text-3xl font-extrabold font-serif text-teal-700 text-center mb-6 animate-bounce">
+          ~DonatorDetails~
+        </h2>
+        {/* Donator Name */}
         <div>
           <label className="block text-lg font-medium text-gray-700">
-            Food Status
+            Donator Name
           </label>
-          <select
-            name="foodStatus"
-            value={formData.foodStatus}
+          <input
+            type="text"
+            name="donatorName"
+            value={formData.donatorName}
             onChange={handleChange}
+            placeholder="Enter Donator name"
             className="w-full px-4 py-2 border rounded-lg focus:ring-teal-400 focus:border-teal-400"
-          >
-            <option value="available">Available</option>
-            <option value="not-available">Not Available</option>
-          </select>
+          />
+        </div>
+        {/* Donator Email */}
+        <div>
+          <label className="block text-lg font-medium text-gray-700">
+            Donator Email
+          </label>
+          <input
+            type="email"
+            name="donatorEmail"
+            value={formData.donatorEmail}
+            onChange={handleChange}
+            placeholder="Enter Donator email"
+            className="w-full px-4 py-2 border rounded-lg focus:ring-teal-400 focus:border-teal-400"
+          />
+        </div>
+        {/* Donator Img */}
+        <div>
+          <label className="block text-lg font-medium text-gray-700">
+            Donator Image URL
+          </label>
+          <input
+            type="url"
+            name="donatorImage"
+            value={formData.donatorImage}
+            onChange={handleChange}
+            placeholder="Donator Image URL"
+            className="w-full px-4 py-2 border rounded-lg focus:ring-teal-400 focus:border-teal-400"
+          />
         </div>
 
         {/* Submit Button */}

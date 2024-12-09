@@ -1,24 +1,39 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
-  const navigate = useNavigate();
   const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
 
+  const [showModal, setShowModal] = useState(false);
+  const [links] = useState([
+    { name: "Home", route: "/" },
+    { name: "AddFood", route: "/add-food" },
+    { name: "ManageFood", route: "/manage-food" },
+    { name: "AvailableFood", route: "/available-food" },
+    { name: "RequestFood", route: "/request-food" },
+    { name: "OurCommunity", route: "/community" },
+    { name: "ContactUs", route: "/contact" },
+  ]);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
     signIn(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
-        navigate("/contact");
+        const loggedInUser = result.user;
+        console.log("User logged in:", loggedInUser);
+        setShowModal(true);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.error(error.message);
+        if (error.message.includes("user-not-found")) {
+          navigate("/signup");
+        }
+      });
   };
 
   return (
@@ -90,6 +105,37 @@ const Login = () => {
           </form>
         </div>
       </div>
+
+      {/* Modal for Successful Login */}
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white w-96 p-6 rounded-lg shadow-lg">
+            <h3 className="text-2xl font-serif font-bold text-teal-700 mb-4">
+              Welcome Back!
+            </h3>
+            <p className="text-gray-600 mb-6">Choose where to go next:</p>
+            <ul>
+              {links.map((link) => (
+                <li key={link.route} className="mb-2">
+                  <Link
+                    to={link.route}
+                    className="block text-teal-600 hover:underline font-serif font-bold"
+                    onClick={() => setShowModal(false)}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => setShowModal(false)}
+              className="mt-4 w-full py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-800"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
