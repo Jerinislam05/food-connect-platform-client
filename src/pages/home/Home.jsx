@@ -4,14 +4,14 @@ import CustomerFavorites from "./CustomerFavorites";
 import FeaturedFood from "./FeaturedFood";
 
 const Home = () => {
-  return (
-    <div>
-        <Banner></Banner>
-      <FeaturedFood></FeaturedFood>
-      <ChefsSpecialPicks></ChefsSpecialPicks>
-      <CustomerFavorites></CustomerFavorites>
-    </div>
-  );
+	return (
+		<div className="w-full">
+			<Banner></Banner>
+			<FeaturedFood></FeaturedFood>
+			<ChefsSpecialPicks></ChefsSpecialPicks>
+			<CustomerFavorites></CustomerFavorites>
+		</div>
+	);
 };
 
 export default Home;

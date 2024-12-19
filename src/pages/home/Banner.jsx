@@ -1,113 +1,117 @@
 import { useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { useRef } from "react";
 
 const Banner = () => {
-  const navigate = useNavigate();
+	const swiperRef = useRef(null);
+	const navigate = useNavigate();
 
-  const handleContact = () => {
-    navigate("/contact");
-  };
+	const handleContact = () => {
+		navigate("/contact");
+	};
 
-  const handleCommunity = () => {
-    navigate("/community");
-  };
+	const handleCommunity = () => {
+		navigate("/community");
+	};
 
-  return (
-    <div className="carousel w-full rounded-xl">
-      <div id="slide1" className="carousel-item relative w-full h-[600px]">
-        <img
-          src="https://plus.unsplash.com/premium_photo-1661425443949-a5df44f1f2dd?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZmFtaWx5JTIwd2l0aCUyMGdyYW5kcGFyZW50c3xlbnwwfHwwfHx8MA%3D%3D"
-          className="w-full object-cover"
-        />
-        <div className="absolute flex items-center h-full top-0 left-0 bg-gradient-to-r from-[#292929] to-[rgba(21, 21, 21, .5)]">
-          <div className="text-white font-serif pl-12 space-y-7 w-1/2">
-            <h2 className="text-6xl font-medium">Welcome to Food Connect</h2>
-            <p className="text-2xl">Your Gateway to Delicious Journeys!</p>
-            <div>
-              <button 
-              onClick={handleCommunity}
-              className="btn btn-warning mr-5">
-                Our Community
-              </button>
-              <button 
-              onClick={handleContact}
-              className="btn btn-outline btn-warning">Contact Here</button>
-            </div>
-          </div>
-        </div>
-        <div className="absolute left-5 right-5 flex -translate-y-1/2 transform bottom-0 justify-end">
-          <a href="#slide4" className="btn btn-circle mr-5">
-            ❮
-          </a>
-          <a href="#slide2" className="btn btn-circle">
-            ❯
-          </a>
-        </div>
-      </div>
-      <div id="slide2" className="carousel-item relative w-full h-[600px]">
-        <img
-          src="https://muslimi.com/wp-content/uploads/2023/04/da.jpg"
-          className="w-full object-cover"
-        />
-        <div className="absolute flex items-center h-full top-0 left-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
-          <div className="text-white font-serif pl-12 space-y-7 w-1/2">
-            <h2 className="text-6xl font-medium">
-              Food Connect: Bringing People Together, One Bite at a Time!
-            </h2>
-          </div>
-        </div>
-        <div className="absolute left-5 right-5 flex -translate-y-1/2 transform bottom-0 justify-end">
-          <a href="#slide1" className="btn btn-circle mr-5">
-            ❮
-          </a>
-          <a href="#slide3" className="btn btn-circle">
-            ❯
-          </a>
-        </div>
-      </div>
-      <div id="slide3" className="carousel-item relative w-full h-[600px]">
-        <img
-          src="https://t3.ftcdn.net/jpg/02/92/07/56/360_F_292075696_hGdSBQ9Bvf1jsaVMP2rTpuRr0VMATck0.jpg"
-          className="w-full object-cover"
-        />
-        <div className="absolute flex items-center h-full top-0 left-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
-          <div className="text-white font-serif pl-12 space-y-7 w-1/2">
-            <h2 className="text-6xl font-medium">
-              Connect, Crave, Conquer – Dive Into a World of Flavor!
-            </h2>
-          </div>
-        </div>
-        <div className="absolute left-5 right-5 flex -translate-y-1/2 transform bottom-0 justify-end">
-          <a href="#slide2" className="btn btn-circle mr-5">
-            ❮
-          </a>
-          <a href="#slide4" className="btn btn-circle">
-            ❯
-          </a>
-        </div>
-      </div>
-      <div id="slide4" className="carousel-item relative w-full h-[600px]">
-        <img
-          src="https://upmeals.com/wp-content/uploads/2021/05/dinner-together.jpg"
-          className="w-full object-cover"
-        />
-        <div className="absolute flex items-center h-full top-0 left-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
-          <div className="text-white font-serif pl-12 space-y-7 w-1/2">
-            <h2 className="text-6xl font-medium">
-              Sign Up Now and Savor Every Moment with Food Connect!
-            </h2>
-          </div>
-        </div>
-        <div className="absolute left-5 right-5 flex -translate-y-1/2 transform bottom-0 justify-end">
-          <a href="#slide3" className="btn btn-circle mr-5">
-            ❮
-          </a>
-          <a href="#slide1" className="btn btn-circle">
-            ❯
-          </a>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<div className="container mx-auto mb-16">
+			<Swiper
+				loop={true}
+				className="mySwiper w-full h-full rounded-xl"
+				onSwiper={(swiper) => (swiperRef.current = swiper)}
+			>
+				<SwiperSlide>
+					<div className="home-slide slide-1">
+						<div className="slide-content">
+							<div>
+								<h2 className="text-6xl font-medium">
+									Welcome to Food Connect
+								</h2>
+								<p className="text-2xl font-light bg-yellow-700 bg-opacity-25">
+									Your Gateway to Delicious Journeys!
+								</p>
+							</div>
+						</div>
+					</div>
+				</SwiperSlide>
+				<SwiperSlide>
+					<div id="slide2" className="home-slide slide-2">
+						<div className="slide-content">
+							<div>
+								<h2 className="text-6xl font-medium">
+									Bringing People Together One
+								</h2>
+								<p className="text-2xl font-light bg-yellow-700 bg-opacity-25">
+									Bite at a Time!
+								</p>
+							</div>
+						</div>
+					</div>
+				</SwiperSlide>
+				<SwiperSlide>
+					<div id="slide3" className="home-slide slide-3">
+						<div className="slide-content">
+							<div>
+								<h2 className="text-6xl font-medium">
+									Connect, Crave, Conquer
+								</h2>
+								<p className="text-2xl font-light bg-yellow-700 bg-opacity-25">
+									Dive Into a World of Flavor!
+								</p>
+							</div>
+						</div>
+					</div>
+				</SwiperSlide>
+				<SwiperSlide>
+					<div id="slide4" className="home-slide slide-4">
+						<div className="slide-content">
+							<div>
+								<h2 className="text-6xl font-medium">
+									Sign Up Now
+								</h2>
+								<p className="text-2xl font-light bg-yellow-700 bg-opacity-25">
+									Savor Every Moment with Food Connect!
+								</p>
+							</div>
+						</div>
+					</div>
+				</SwiperSlide>
+
+				<div className="swipper-bottom z-50">
+					<div className="">
+						<button
+							onClick={handleCommunity}
+							className="btn-warning-custom mr-5"
+						>
+							Our Community
+						</button>
+						<button
+							onClick={handleContact}
+							className="btn-white-custom"
+						>
+							Contact Here
+						</button>
+					</div>
+					<div className="pagination">
+						<a
+							onClick={() => swiperRef.current?.slidePrev()}
+							className="btn-white-custom !rounded-full mr-4"
+						>
+							❮
+						</a>
+						<a
+							onClick={() => swiperRef.current?.slideNext()}
+							className="btn-white-custom !rounded-full"
+						>
+							❯
+						</a>
+					</div>
+				</div>
+			</Swiper>
+		</div>
+	);
 };
 
 export default Banner;

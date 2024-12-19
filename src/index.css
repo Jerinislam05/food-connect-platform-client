@@ -1,3 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+	font-family: "Open Sans", sans-serif;
+}
+
+h2 {
+	line-height: 1.2em !important;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+	@apply border-teal-600 outline-teal-600;
+}
+
+select:focus {
+	border-width: 2px;
+}
+
+.spaced-text {
+	line-height: 2em;
+}
+
+.flex-text {
+	@apply text-gray-200 flex items-center gap-2;
+}
+
+.smooth {
+	@apply duration-300 ease-in-out;
+}
+
+.icon-holder {
+	@apply p-2 rounded-full border-2 border-white bg-white;
+}
+
+.text-head {
+	@apply text-2xl font-bold text-teal-700 mb-6;
+}
+
+.btn-teal-custom,
+.btn-white-custom,
+.btn-warning-custom {
+	@apply px-4 py-2 rounded-lg cursor-pointer transition-[background] duration-300 ease-in-out !important;
+}
+
+.btn-teal-custom {
+	@apply text-white bg-teal-600  hover:bg-teal-700;
+}
+
+.btn-warning-custom {
+	@apply text-black bg-warning hover:bg-yellow-500;
+}
+
+.btn-white-custom {
+	@apply text-black bg-white hover:bg-gray-100;
+}
+
+/* Header */
+.menu li a {
+	padding: 4px 12px;
+}
+
+/* Banner */
+.home-slide {
+	@apply bg-no-repeat bg-cover bg-center carousel-item w-full h-[80vh];
+}
+.home-slide .slide-content {
+	@apply flex justify-center items-center h-full w-full bg-black bg-opacity-65 text-white;
+}
+.home-slide .slide-content > div {
+	@apply flex flex-col items-center text-center gap-6 w-3/4 -mt-32;
+}
+
+.home-slide.slide-1 {
+	background-image: url("/assets/foodsharing_slide1.jpg");
+}
+.home-slide.slide-2 {
+	background-image: url("https://muslimi.com/wp-content/uploads/2023/04/da.jpg");
+}
+.home-slide.slide-3 {
+	background-image: url("https://t3.ftcdn.net/jpg/02/92/07/56/360_F_292075696_hGdSBQ9Bvf1jsaVMP2rTpuRr0VMATck0.jpg");
+}
+.home-slide.slide-4 {
+	background-image: url("/assets/foodsharing_slide4.jpg");
+}
+
+.swipper-bottom {
+	@apply flex justify-between w-full absolute bottom-0 p-6 bg-teal-600;
+}
