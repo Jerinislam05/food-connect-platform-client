@@ -5,7 +5,7 @@ const RequestFood = () => {
 
 	useEffect(() => {
 		// Fetch submitted requests
-		fetch("http://localhost:5000/requests")
+		fetch("https://food-connect-server.vercel.app/requests")
 			.then((res) => res.json())
 			.then((data) => setRequests(data))
 			.catch((error) => console.error("Error fetching requests:", error));

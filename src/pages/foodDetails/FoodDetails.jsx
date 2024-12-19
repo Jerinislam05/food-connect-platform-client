@@ -5,11 +5,11 @@ import { FaUtensils } from "react-icons/fa";
 const FoodDetails = () => {
 	const { id } = useParams();
 	const [food, setFood] = useState(null);
-    const navigate = useNavigate();
+	const navigate = useNavigate();
 	const [requestedQuantity, setRequestedQuantity] = useState("");
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/foods/${id}`)
+		fetch(`https://food-connect-server.vercel.app/foods/${id}`)
 			.then((res) => res.json())
 			.then((data) => setFood(data))
 			.catch((error) =>
@@ -31,7 +31,7 @@ const FoodDetails = () => {
 			requestedQuantity,
 		};
 
-		fetch("http://localhost:5000/requests", {
+		fetch("https://food-connect-server.vercel.app/requests", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -42,7 +42,7 @@ const FoodDetails = () => {
 				if (res.ok) {
 					alert("Request submitted successfully!");
 					document.getElementById("request-modal").close();
-                    navigate("")
+					navigate("");
 				} else {
 					alert("Error submitting request!");
 				}

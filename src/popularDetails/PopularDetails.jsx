@@ -8,7 +8,7 @@ const PopularDetails = () => {
 	const [requestedQuantity, setRequestedQuantity] = useState("");
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/popular/${id}`)
+		fetch(`https://food-connect-server.vercel.app/popular/${id}`)
 			.then((res) => res.json())
 			.then((data) => setPopular(data))
 			.catch((error) =>
@@ -31,7 +31,7 @@ const PopularDetails = () => {
 			requestedQuantity,
 		};
 
-		fetch("http://localhost:5000/requests", {
+		fetch("https://food-connect-server.vercel.app/requests", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

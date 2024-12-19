@@ -16,7 +16,7 @@ const ManageFood = () => {
 
 		try {
 			const response = await fetch(
-				`http://localhost:5000/foods?email=${userEmail}`
+				`https://food-connect-server.vercel.app/foods?email=${userEmail}`
 			);
 			if (!response.ok) {
 				throw new Error("Failed to fetch foods");
@@ -38,9 +38,12 @@ const ManageFood = () => {
 		if (!confirmDelete) return;
 
 		try {
-			const response = await fetch(`http://localhost:5000/foods/${id}`, {
-				method: "DELETE",
-			});
+			const response = await fetch(
+				`https://food-connect-server.vercel.app/foods/${id}`,
+				{
+					method: "DELETE",
+				}
+			);
 			const result = await response.json();
 
 			if (result.result.deletedCount > 0) {
@@ -69,7 +72,7 @@ const ManageFood = () => {
 
 		try {
 			const response = await fetch(
-				`http://localhost:5000/foods/${editingFood._id}`,
+				`https://food-connect-server.vercel.app/foods/${editingFood._id}`,
 				{
 					method: "PUT",
 					headers: {

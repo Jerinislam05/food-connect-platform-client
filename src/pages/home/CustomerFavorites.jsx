@@ -14,7 +14,9 @@ const CustomerFavorites = () => {
 	useEffect(() => {
 		const fetchFavorites = async () => {
 			try {
-				const response = await fetch("http://localhost:5000/popular");
+				const response = await fetch(
+					"https://food-connect-server.vercel.app/popular"
+				);
 				if (!response.ok) {
 					throw new Error("Failed to fetch customer favorites");
 				}

@@ -55,13 +55,17 @@ const router = createBrowserRouter([
 				path: `/foods/:id`,
 				element: <FoodDetails></FoodDetails>,
 				loader: ({ params }) =>
-					fetch(`http://localhost:5000/foods/${params.id}`),
+					fetch(
+						`https://food-connect-server.vercel.app/foods/${params.id}`
+					),
 			},
 			{
 				path: `/popular/:id`,
 				element: <PopularDetails></PopularDetails>,
 				loader: ({ params }) =>
-					fetch(`http://localhost:5000/popular/${params.id}`),
+					fetch(
+						`https://food-connect-server.vercel.app/popular/${params.id}`
+					),
 			},
 			{
 				path: "/manage-food",

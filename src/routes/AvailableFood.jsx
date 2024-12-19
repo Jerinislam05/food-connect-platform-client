@@ -6,7 +6,7 @@ const AvailableFood = () => {
 
 	useEffect(() => {
 		// Fetch available foods
-		fetch("http://localhost:5000/foods-available")
+		fetch("https://food-connect-server.vercel.app/foods-available")
 			.then((res) => res.json())
 			.then((data) => setAvailableFoods(data))
 			.catch((error) =>
