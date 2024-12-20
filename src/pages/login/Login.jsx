@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
 	const { signIn } = useContext(AuthContext);
@@ -16,6 +17,29 @@ const Login = () => {
 		{ name: "OurCommunity", route: "/community" },
 		{ name: "ContactUs", route: "/contact" },
 	]);
+
+	function mapFirebaseLoginErrorToMessage(errorCode) {
+		const errorMessages = {
+			"auth/invalid-credential":
+				"The password is incorrect. Please try again.",
+			"auth/user-not-found":
+				"No user found with this email. Please sign up first.",
+			"auth/invalid-email":
+				"The email address is not valid. Please enter a valid email.",
+			"auth/user-disabled":
+				"This user account has been disabled. Please contact support.",
+			"auth/network-request-failed":
+				"Network error. Please check your internet connection and try again.",
+			"auth/too-many-requests":
+				"Too many failed login attempts. Please try again later.",
+		};
+
+		return (
+			errorMessages[errorCode] ||
+			"An unexpected error occurred. Please try again later."
+		);
+	}
+
 	const handleLogin = (event) => {
 		event.preventDefault();
 		const form = event.target;
@@ -29,10 +53,11 @@ const Login = () => {
 				setShowModal(true);
 			})
 			.catch((error) => {
-				console.error(error.message);
-				if (error.message.includes("user-not-found")) {
-					navigate("/signup");
-				}
+				console.error("Error during login:", error.message);
+				const friendlyMessage = mapFirebaseLoginErrorToMessage(
+					error.code
+				);
+				toast.error(friendlyMessage);
 			});
 	};
 
@@ -93,7 +118,7 @@ const Login = () => {
 						</div>
 
 						{/* Sign Up Link */}
-						<p className="text-center font-bold  text-gray-500 text-sm">
+						<p className="text-center font-bold flex gap-2 text-gray-500 text-sm">
 							New to Food Connect? <br />
 							<Link
 								to="/signup"

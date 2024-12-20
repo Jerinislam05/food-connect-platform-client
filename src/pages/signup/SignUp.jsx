@@ -1,10 +1,33 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
 	const { createUser } = useContext(AuthContext);
 	const [showModal, setShowModal] = useState(false);
+
+	function mapFirebaseErrorToMessage(errorCode) {
+		const errorMessages = {
+			"auth/email-already-in-use":
+				"This email is already in use. Please use a different email.",
+			"auth/invalid-email":
+				"The email address is not valid. Please enter a valid email.",
+			"auth/weak-password":
+				"The password is too weak. Please choose a stronger password.",
+			"auth/user-disabled":
+				"This user account has been disabled. Please contact support.",
+			"auth/operation-not-allowed":
+				"This operation is not allowed. Please contact support.",
+			"auth/network-request-failed":
+				"Network error. Please check your internet connection and try again.",
+		};
+
+		return (
+			errorMessages[errorCode] ||
+			"An unexpected error occurred. Please try again later."
+		);
+	}
 
 	const handleSignUp = (event) => {
 		event.preventDefault();
@@ -17,14 +40,18 @@ const SignUp = () => {
 				console.log("User created:", result.user);
 				setShowModal(true);
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => {
+				console.error("Error creating user:", error.message);
+				const friendlyMessage = mapFirebaseErrorToMessage(error.code);
+				toast.error(friendlyMessage);
+			});
 	};
 
 	return (
-		<div className="flex items-center justify-center min-h-screen bg-gray-100">
-			<div className="flex flex-col-reverse lg:flex-row bg-white rounded-lg shadow-xl w-full max-w-4xl">
+		<div className="flex flex-col gap-2 items-center justify-center min-h-screen bg-gray-100">
+			<div className="flex flex-col-reverse lg:flex-row bg-white rounded-lg shadow-xl w-full max-w-4xl p-8">
 				{/* Form Section */}
-				<div className="lg:w-1/2 p-8">
+				<div className="lg:w-1/2">
 					<h2 className="text-4xl font-extrabold  text-center text-teal-700 mb-4">
 						Sign Up Please!
 					</h2>
@@ -80,7 +107,7 @@ const SignUp = () => {
 						</div>
 
 						{/* Login Link */}
-						<p className="text-center  text-gray-500 text-sm">
+						<p className="text-center flex gap-2 text-gray-500 text-sm">
 							Already Have an Account? <br />
 							<Link
 								to="/login"
@@ -91,6 +118,7 @@ const SignUp = () => {
 						</p>
 					</form>
 				</div>
+				<img src="/assets/signup.svg" className="lg:w-1/2 p-4" />
 			</div>
 
 			{/* Modal for Successful Sign-Up */}
@@ -100,9 +128,6 @@ const SignUp = () => {
 						<h3 className="text-2xl text-center  font-bold text-teal-700 mb-4">
 							Welcome to Food Connect!
 						</h3>
-						<p className="text-gray-600 text-center font-bold  mb-6">
-							Explore your private routes:
-						</p>
 						<ul>
 							<li className="mb-2">
 								<Link
@@ -168,11 +193,6 @@ const SignUp = () => {
 								</Link>
 							</li>
 						</ul>
-						<Link
-							to="/"
-							onClick={() => setShowModal(false)}
-							className="mt-4 w-full py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-800"
-						></Link>
 					</div>
 				</div>
 			)}
