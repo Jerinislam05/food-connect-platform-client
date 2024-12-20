@@ -96,7 +96,7 @@ const Navbar = () => {
 				{/* Brand Name and Logo */}
 				<div className="flex items-center space-x-2">
 					<img
-						src="https://sharefood.be/wp-content/uploads/2018/01/logo-sharefood.png"
+						src="/assets/logo-ico.svg"
 						alt="Logo"
 						className="h-8 w-8 md:h-10 md:w-10"
 					/>
@@ -131,7 +131,7 @@ const Navbar = () => {
 			{isDropdownOpen && (
 				<div className="absolute inset-x-0 top-16 flex justify-center lg:hidden">
 					<img
-						src="https://sharefood.be/wp-content/uploads/2018/01/logo-sharefood.png"
+						src="/assets/logo-ico.svg"
 						alt="Logo"
 						className="h-12 w-12"
 					/>
